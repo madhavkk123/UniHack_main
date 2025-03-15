@@ -1,0 +1,75 @@
+<div>
+  <button type="button" mat-button (click)="drawer.toggle()">
+    Toggle sidenav
+  </button>
+</div>
+<div>
+  <button type="button" mat-button (click)="drawer2.toggle()">
+    Toggle second sidenav
+  </button>
+</div>
+<div class="full-height">
+<mat-sidenav-container class="sidebar" autosize>
+  <mat-sidenav #drawer class="sidenav-content" mode="side">
+
+    <mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+        {{node.name}}
+      </mat-tree-node>
+      <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle>
+        <button mat-icon-button matTreeNodeToggle>
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{tree.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        {{node.name}}
+      </mat-tree-node>
+    </mat-tree>
+
+  </mat-sidenav>
+  <mat-sidenav #drawer2 class="sidenav-content" mode="side" position="end">
+    End Content
+  </mat-sidenav>
+  <mat-tab-group>
+    <mat-tab label="First">
+      <ng-template matTabContent>
+        Content 1 - Loaded:
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Second">
+      <ng-template matTabContent>
+        Content 2 - Loaded:
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Third">
+      <ng-template matTabContent>
+        Content 3 - Loaded:
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+
+
+
+
+
+
+
+
+
+</mat-sidenav-container>
+</div>
+
+<button mat-stroked-button (click)="openDialog()">
+  <mat-icon>menu</mat-icon>
+  Open Dialog
+</button>
+
+<button mat-button>
+  <mat-icon>view_sidebar</mat-icon>
+</button>
+
+
+
+<app-example-pdf-viewer></app-example-pdf-viewer>
+
