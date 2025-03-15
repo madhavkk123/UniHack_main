@@ -2,8 +2,12 @@
   width: 100%;
   height: 100%;
 }
-.sidenav-content{
-  background: red;
+.sidenav-content-1{
+  background: #F3F3F3;
+}
+
+.sidenav-content-2{
+  background: #212121;
 }
 
 .full-height{

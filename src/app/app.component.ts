@@ -26,7 +26,11 @@ export class AppComponent {
   constructor(private dialog: MatDialog) {}
 
   openDialog() {
-    const dialogRef = this.dialog.open(UnitDialogComponent);
+    const dialogRef = this.dialog.open(UnitDialogComponent,{
+      width: '1100px',
+      height: '600px',
+      maxWidth: '2000px'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

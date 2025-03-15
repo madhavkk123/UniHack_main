@@ -1,16 +1,28 @@
-<div>
-  <button type="button" mat-button (click)="drawer.toggle()">
-    Toggle sidenav
-  </button>
-</div>
-<div>
-  <button type="button" mat-button (click)="drawer2.toggle()">
-    Toggle second sidenav
-  </button>
-</div>
+<button mat-button (click)="drawer.toggle()">
+  <mat-icon>view_sidebar</mat-icon>
+</button>
+
+
+<button type="button" mat-button (click)="drawer2.toggle()">
+Ask AI
+</button>
+
+<button mat-stroked-button (click)="openDialog()">
+  <mat-icon>search</mat-icon>
+  Search Unit
+</button>
+
 <div class="full-height">
 <mat-sidenav-container class="sidebar" autosize>
-  <mat-sidenav #drawer class="sidenav-content" mode="side">
+  <mat-sidenav #drawer class="sidenav-content-1" mode="side">
+
+    <button mat-button>
+      <mat-icon>create_new_folder</mat-icon>
+    </button>
+
+    <button mat-button>
+      <mat-icon>upload_file</mat-icon>
+    </button>
 
     <mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor">
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
@@ -28,7 +40,7 @@
     </mat-tree>
 
   </mat-sidenav>
-  <mat-sidenav #drawer2 class="sidenav-content" mode="side" position="end">
+  <mat-sidenav #drawer2 class="sidenav-content-2" mode="side" position="end">
     End Content
   </mat-sidenav>
   <mat-tab-group>
@@ -59,15 +71,6 @@
 
 </mat-sidenav-container>
 </div>
-
-<button mat-stroked-button (click)="openDialog()">
-  <mat-icon>menu</mat-icon>
-  Open Dialog
-</button>
-
-<button mat-button>
-  <mat-icon>view_sidebar</mat-icon>
-</button>
 
 
 

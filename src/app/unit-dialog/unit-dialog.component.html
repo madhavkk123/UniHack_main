@@ -1,23 +1,27 @@
-<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>
+
+<input placeholder="search unit" maxlength="4" size="4">
 <mat-dialog-content class="mat-typography">
-  <mat-card class="example-card" appearance="outlined">
-    <mat-card-header>
-      <mat-card-title>Chihuahua</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{longText}}</p>
-    </mat-card-content>
-    <mat-card-footer class="example-card-footer">
-      <mat-chip-set aria-label="Chihuahua traits">
-        <mat-chip>charming</mat-chip>
-        <mat-chip>graceful</mat-chip>
-        <mat-chip>sassy</mat-chip>
-      </mat-chip-set>
-    </mat-card-footer>
-  </mat-card>
+
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile>
+
+      <mat-card class="example-card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>{{title}}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>{{longText}}</p>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-grid-tile>
+
+  </mat-grid-list>
 
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
-</mat-dialog-actions>
