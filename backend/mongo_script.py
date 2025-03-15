@@ -52,10 +52,9 @@ def insert_json_to_mongodb(json_file_path, db_name, collection_name, mongo_uri='
         client.close()
         print("MongoDB connection closed.")
 
-# Example usage
 if __name__ == "__main__":
-    json_file_path = 'studocu_data.json'  # Replace with your JSON file path
-    db_name = 'Database_unihack'                 # Replace with your database name
-    collection_name = 'query_responses'       # Replace with your collection name
+    json_file_path = 'studocu_data.json'  
+    db_name = 'Database_unihack'                 
+    collection_name = 'query_responses'       
 
     insert_json_to_mongodb(json_file_path, db_name, collection_name)
