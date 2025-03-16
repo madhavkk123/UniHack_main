@@ -37,19 +37,28 @@ Ask AI
 
   </mat-sidenav>
   <mat-sidenav #drawer2 class="sidenav-content-2" mode="side" position="end">
-    End Content
   </mat-sidenav>
 
+  <mat-list role="list" class="chat-msg">
+    @for(msg of dataHistory; track msg; let i = $index){
+      <mat-list-item role="listitem">
+        <mat-card appearance="outlined">
+          <mat-card-content>
+            {{msg}}
+          </mat-card-content>
+        </mat-card>
+        <br/>
+      </mat-list-item>
+    }
+  </mat-list>
 
-  <mat-tab-group>
-    <mat-tab label="First">
-      <ng-template matTabContent>
-      </ng-template>
-    </mat-tab>
-  </mat-tab-group>
-
-
-
+  <form class="input-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Input to AI</mat-label>
+      <input matInput #inputToAI>
+      <button mat-button (click)="sendQuery(inputToAI.value)"><mat-icon>send</mat-icon></button>
+    </mat-form-field>
+  </form>
 
 
 </mat-sidenav-container>

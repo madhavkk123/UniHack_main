@@ -9,13 +9,18 @@ import {ExamplePdfViewerComponent} from './example-pdf-viewer/example-pdf-viewer
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {UnitDialogComponent} from './unit-dialog/unit-dialog.component';
 import {DatabaseService} from './database.service';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+import {MatCard, MatCardModule} from '@angular/material/card';
 
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,
     MatSidenavModule, MatButtonModule,
-    MatTreeModule, MatDialogModule,MatIconModule, MatTabsModule, ExamplePdfViewerComponent],
+    MatTreeModule, MatDialogModule, MatIconModule, MatTabsModule, ExamplePdfViewerComponent, MatListModule,
+    MatFormFieldModule, MatInput, MatCardModule],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrl: './app.component.css'
@@ -25,14 +30,26 @@ export class AppComponent {
   showFiller = false;
 
   constructor(private dialog: MatDialog, private dbs: DatabaseService) {}
+  dataHistory: any[] = ["What is this?","This is Project Lecture Learner" +
+  "by ByteStorm.","Great! What does it do?"]
 
   ngOnInit(){
       this.dbs.getEnrolledUnits()
     this.dbs.getDocument("principles of finance uni melb").subscribe(
-      (data) => {console.log(data)}
+      (data:any ) => {
+        this.dataHistory = data.conversation_history
+      }
     )
   }
 
+  sendQuery(query:string){
+    this.dbs.getDocument(query).subscribe(
+      (data:any ) => {
+        this.dataHistory = data.conversation_history
+        console.log(this.dataHistory)
+      }
+    )
+  }
   openDocument(node: any){
 
   }
@@ -43,7 +60,6 @@ export class AppComponent {
       this.dbs.addDocument(file)
     }
   }
-
   openDialog() {
     const dialogRef = this.dialog.open(UnitDialogComponent,{
       width: '1100px',
