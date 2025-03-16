@@ -1,0 +1,42 @@
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>
+
+<div class="input-div">
+<input class="input-unit" placeholder="search unit">
+</div>
+
+<br/>
+<br/>
+<mat-dialog-content class="mat-typography">
+
+  <mat-grid-list cols="3" rowHeight="200px">
+    @for(unit of data; track unit; let i = $index){
+      <mat-grid-tile>
+        <mat-card class="tile" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>{{unit.code}}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p>{{unit.title}}</p>
+          </mat-card-content>
+          <mat-card-content>
+            @if(unit.added){
+            <button mat-button class="add-button" (click)="addUnit(unit.code)">Add</button>
+            }@else{
+              <button mat-button class="remove-button" (click)="removeUnit(unit.code)">Remove</button>
+            }
+          </mat-card-content>
+          <mat-card-content>
+            <p>{{unit.description}}</p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    }
+
+  </mat-grid-list>
+
+</mat-dialog-content>

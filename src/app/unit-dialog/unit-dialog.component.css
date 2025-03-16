@@ -1,0 +1,25 @@
+.input-div{
+  width: 350px;
+  margin-left: 20px;
+}
+
+.input-unit{
+  border-radius: 20px;
+  height: 20px;
+  width: 350px;
+}
+
+.add-button{
+  background: lightgreen;
+  color: white;
+}
+
+.remove-button{
+  background: lightcoral;
+  color: white;
+}
+
+.tile{
+  width: 350px;
+  height: 200px;
+}
