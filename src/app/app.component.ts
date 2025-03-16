@@ -28,6 +28,9 @@ export class AppComponent {
 
   ngOnInit(){
       this.dbs.getEnrolledUnits()
+    this.dbs.getDocument("principles of finance uni melb").subscribe(
+      (data) => {console.log(data)}
+    )
   }
 
   openDocument(node: any){
