@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Data, RouterOutlet} from '@angular/router';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTreeModule} from '@angular/material/tree';
@@ -8,6 +8,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {ExamplePdfViewerComponent} from './example-pdf-viewer/example-pdf-viewer.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {UnitDialogComponent} from './unit-dialog/unit-dialog.component';
+import {DatabaseService} from './database.service';
 
 
 @Component({
@@ -23,7 +24,22 @@ export class AppComponent {
   title = 'uniHack';
   showFiller = false;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private dbs: DatabaseService) {}
+
+  ngOnInit(){
+      this.dbs.getEnrolledUnits()
+  }
+
+  openDocument(node: any){
+
+  }
+  uploadFile(event: any){
+    const file :File = event.target.files[0];
+
+    if(file){
+      this.dbs.addDocument(file)
+    }
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(UnitDialogComponent,{
@@ -53,8 +69,10 @@ export class AppComponent {
       ],
     },
   ];
-  childrenAccessor = (node: any) => node.children ?? [];
 
+
+
+  childrenAccessor = (node: any) => node.children ?? [];
   hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
 
 

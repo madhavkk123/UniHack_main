@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-
-const httpOptions = {
-  headers: new HttpHeaders({"Content-Type": "application/json"}),
-};
+import {HttpClient} from '@angular/common/http';
 
 const API_URL = "/34429336/Johanes/api"
 
@@ -12,33 +8,30 @@ const API_URL = "/34429336/Johanes/api"
 })
 export class DatabaseService {
 
-
   constructor(private http: HttpClient) {
   }
 
   getUnits(driver: any){
-    let url = API_URL + "/"
-    return "hello"
+
   }
 
-  getEnrolledUnits(driver: any){
-    let url = API_URL + "/"
-    return "hello"
+  getEnrolledUnits(){
+
   }
 
-  addUnits(driver: any){
-    let url = API_URL + "/"
-    return "hello"
+  removeUnits(unit: any){
+
+  }
+
+  addUnits(unit: any){
   }
 
   getDocument(){
-    let url = API_URL + "/"
-    return "hello"
+
   }
 
   addDocument(file: File){
-    let url = API_URL + "/"
-    return "hello"
+
   }
 
 

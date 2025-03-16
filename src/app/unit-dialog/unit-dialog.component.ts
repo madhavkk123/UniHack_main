@@ -5,6 +5,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIcon} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {DatabaseService} from '../database.service';
 
 
 
@@ -17,5 +18,23 @@ import {MatGridListModule} from '@angular/material/grid-list';
 })
 export class UnitDialogComponent {
 
-  data = [{code:"FIT3155", title:"Advanced Algorithms", added:true, description:"Hi"}]
+  constructor(private dbs: DatabaseService) {
+  }
+
+  addUnit(code:string){
+    this.dbs.addUnits(code)
+
+    this.dbs.getEnrolledUnits()
+  }
+
+  removeUnit(code:string){
+    this.dbs.removeUnits(code)
+
+    this.dbs.getEnrolledUnits()
+  }
+
+  data = [{code:"FIT3155", title:"Advanced Algorithms", added:true, description:"Hi"},
+    {code:"FIT2044", title:"Hypothetical", added:false, description:"Hi"},
+    {code:"FIT2044", title:"Hypothetical", added:false, description:"Hi"},
+    {code:"FIT2044", title:"Hypothetical", added:false, description:"Hi"}]
 }

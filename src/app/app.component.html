@@ -2,7 +2,6 @@
   <mat-icon>view_sidebar</mat-icon>
 </button>
 
-
 <button type="button" mat-button (click)="drawer2.toggle()">
 Ask AI
 </button>
@@ -16,18 +15,15 @@ Ask AI
 <mat-sidenav-container class="sidebar" autosize>
   <mat-sidenav #drawer class="sidenav-content-1" mode="side">
 
-    <button mat-button>
-      <mat-icon>create_new_folder</mat-icon>
-    </button>
-
-    <button mat-button>
+    <input type="file" (click)="uploadFile($event)" #fileInput hidden>
+    <button mat-button (click)="fileInput.click()">
       <mat-icon>upload_file</mat-icon>
     </button>
 
     <mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor">
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
         <button mat-icon-button disabled></button>
-        {{node.name}}
+        <button mat-button (click)="openDocument(node.name)">{{node.name}}</button>
       </mat-tree-node>
       <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle>
         <button mat-icon-button matTreeNodeToggle>
@@ -43,20 +39,11 @@ Ask AI
   <mat-sidenav #drawer2 class="sidenav-content-2" mode="side" position="end">
     End Content
   </mat-sidenav>
+
+
   <mat-tab-group>
     <mat-tab label="First">
       <ng-template matTabContent>
-        Content 1 - Loaded:
-      </ng-template>
-    </mat-tab>
-    <mat-tab label="Second">
-      <ng-template matTabContent>
-        Content 2 - Loaded:
-      </ng-template>
-    </mat-tab>
-    <mat-tab label="Third">
-      <ng-template matTabContent>
-        Content 3 - Loaded:
       </ng-template>
     </mat-tab>
   </mat-tab-group>
@@ -65,14 +52,6 @@ Ask AI
 
 
 
-
-
-
-
 </mat-sidenav-container>
 </div>
-
-
-
-<app-example-pdf-viewer></app-example-pdf-viewer>
 

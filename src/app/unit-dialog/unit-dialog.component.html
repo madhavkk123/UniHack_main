@@ -12,7 +12,7 @@
 <br/>
 <mat-dialog-content class="mat-typography">
 
-  <mat-grid-list cols="3" rowHeight="300px">
+  <mat-grid-list cols="3" rowHeight="200px">
     @for(unit of data; track unit; let i = $index){
       <mat-grid-tile>
         <mat-card class="tile" appearance="outlined">
@@ -25,9 +25,9 @@
           </mat-card-content>
           <mat-card-content>
             @if(unit.added){
-            <button mat-button class="add-button">Add</button>
+            <button mat-button class="add-button" (click)="addUnit(unit.code)">Add</button>
             }@else{
-              <button mat-button class="remove-button">Remove</button>
+              <button mat-button class="remove-button" (click)="removeUnit(unit.code)">Remove</button>
             }
           </mat-card-content>
           <mat-card-content>
