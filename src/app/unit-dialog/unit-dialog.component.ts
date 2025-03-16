@@ -16,8 +16,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
   styleUrl: './unit-dialog.component.css'
 })
 export class UnitDialogComponent {
-  title="Hello"
-  longText = `The Chihuahua is a Mexican breed of toy dog. It is named for the
-  Mexican state of Chihuahua and is among the smallest of all dog breeds. It is
-  usually kept as a companion animal or for showing.`;
+
+  data = [{code:"FIT3155", title:"Advanced Algorithms", added:true, description:"Hi"}]
 }
